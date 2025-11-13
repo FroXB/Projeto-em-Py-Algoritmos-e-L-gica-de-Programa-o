@@ -45,7 +45,7 @@ def cadastrar_peca():
         "cor": cor,
         "comprimento": comprimento,
         "status": status,
-        "motivos_reprovacao": motivos,
+        "motivos_reprovação": motivos,
     }
     pecas.append(peca)
 
@@ -85,7 +85,7 @@ def listar_pecas():
                 f"Comprimento: {p['comprimento']}cm"
             )
             print("  Motivos:")
-            for m in p["motivos_reprovacao"]:
+            for m in p["motivos_reprovação"]:
                 print(f"   - {m}")
 
 
@@ -141,8 +141,8 @@ def listar_caixas_fechadas():
         print(f"\nCaixa em abertura com {len(ultima)} peça(s).")
 
 
-def gerar_relatorio_final():
-    print("=== RELATÓRIO FINAL VISIONSENSE ===")
+def gerar_relatório_final():
+    print("=== RELATÓRIO FINAL VisionSense ===")
     total = len(pecas)
     aprovadas = obter_pecas_aprovadas()
     reprovadas = [p for p in pecas if p["status"] == "reprovada"]
@@ -162,7 +162,7 @@ def gerar_relatorio_final():
     else:
         contagem = {}
         for p in reprovadas:
-            for m in p["motivos_reprovacao"]:
+            for m in p["motivos_reprovação"]:
                 contagem[m] = contagem.get(m, 0) + 1
         for motivo, qtd in contagem.items():
             print(f"- {motivo}: {qtd} peça(s)")
@@ -175,32 +175,32 @@ def gerar_relatorio_final():
 def main():
     while True:
         limpar_tela()
-        print("=== SISTEMA VISIONSENSE - INSPEÇÃO DE MÓDULOS ===")
+        print("=== SISTEMA VisionSense - INSPEÇÃO DE MÓDULOS ===")
         print("1. Cadastrar nova peça")
         print("2. Listar peças aprovadas/reprovadas")
         print("3. Remover peça cadastrada")
         print("4. Listar caixas fechadas")
         print("5. Gerar relatório final")
         print("0. Sair")
-        opcao = input("Opção: ").strip()
+        opção = input("Opção: ").strip()
 
-        if opcao == "0":
+        if opção == "0":
             limpar_tela()
             print("Encerrando o sistema VisionSense.")
             break
 
         limpar_tela()
 
-        if opcao == "1":
+        if opção == "1":
             cadastrar_peca()
-        elif opcao == "2":
+        elif opção == "2":
             listar_pecas()
-        elif opcao == "3":
+        elif opção == "3":
             remover_peca()
-        elif opcao == "4":
+        elif opção == "4":
             listar_caixas_fechadas()
-        elif opcao == "5":
-            gerar_relatorio_final()
+        elif opção == "5":
+            gerar_relatório_final()
         else:
             print("Opção inválida.")
 
